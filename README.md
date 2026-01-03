@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ModelIt Readers
 
-## Getting Started
+**See the Systems in Everything** - A K-12 systems thinking subscription platform.
 
-First, run the development server:
+## Quick Start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app runs in **demo mode** without credentials - all features work with sample data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+| Section | Files | Status |
+|---------|-------|--------|
+| 1. Landing Page | src/app/page.tsx | Complete |
+| 2. Authentication | src/lib/supabase/ | Complete |
+| 3. Payments | src/lib/stripe.ts | Complete |
+| 4. Teacher Dashboard | src/app/dashboard/ | Complete |
+| 5. Student Portal | src/app/student/ | Complete |
+| 6. Content System | src/content/ | Pending |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 1. Landing Page
 
-## Deploy on Vercel
+**Files:** src/app/page.tsx, src/app/pricing/page.tsx
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Hero section with tagline and CTAs
+- Pricing cards (Teacher 9/yr, School 99/yr)
+- Topic preview (4 topics)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 2. Authentication (Supabase)
+
+**Files:** src/lib/supabase/, src/app/(auth)/
+
+- Email/password + Google SSO
+- Student join codes
+- Role-based access
+
+**Setup:** Add NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY to .env.local
+
+---
+
+## 3. Payments (Stripe)
+
+**Files:** src/lib/stripe.ts, src/app/api/checkout/
+
+| Tier | Price | Seats |
+|------|-------|-------|
+| Teacher | 9/year | 36 |
+| School | 99/year | Unlimited |
+
+**Setup:** Add STRIPE_SECRET_KEY, STRIPE_PRICE_TEACHER, STRIPE_PRICE_SCHOOL to .env.local
+
+---
+
+## 4. Teacher Dashboard
+
+**Files:** src/app/dashboard/
+
+- /dashboard - Overview
+- /dashboard/classrooms - Manage classes
+- /dashboard/content - Content library
+- /dashboard/assign - Assignments
+- /dashboard/progress - Student progress
+- /dashboard/account - Billing
+
+---
+
+## 5. Student Portal
+
+**Files:** src/app/student/
+
+- /student - Dashboard
+- /student/read/[id] - Reader view
+- /student/activity/[id] - Quiz view
+
+---
+
+## 6. Content System (MDX) - PENDING
+
+**Topics:** Ecosystems, Human Body, Economics, Climate
+
+**Reading Levels:** Low, Mid, High
+
+---
+
+## Roadmap
+
+**Phase 1 (Complete):** Platform scaffold
+**Phase 2 (In Progress):** MDX content system
+**Phase 3:** Supabase integration
+**Phase 4:** Polish and launch
+
+---
+
+## Tech Stack
+
+Next.js 16 | TypeScript | Tailwind 4 | shadcn/ui | Supabase | Stripe | Vercel
+
+---
+
+**License:** Private - ModelIt / Discovery Collective
